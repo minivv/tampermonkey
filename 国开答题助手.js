@@ -16,8 +16,8 @@
 // @icon         https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @run-at       document-idle
 // @license      Apache-2.0
-// @downloadURL https://github.com/minivv/tampermonkey/blob/master/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B.js
-// @updateURL https://github.com/minivv/tampermonkey/blob/master/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B.js
+// @downloadURL https://update.greasyfork.org/scripts/536801/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B%EF%BC%88%E5%8F%AF%E8%87%AA%E5%8A%A8%E5%8B%BE%E9%80%89%E7%AD%94%E6%A1%88%E3%80%81%E4%B8%80%E9%94%AE%E5%A4%8D%E5%88%B6%E9%A2%98%E7%9B%AE%E5%8F%8A%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF%E3%80%81AI%E8%87%AA%E5%8A%A8%E7%AD%94%E9%A2%98%EF%BC%89.user.js
+// @updateURL https://update.greasyfork.org/scripts/536801/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B%EF%BC%88%E5%8F%AF%E8%87%AA%E5%8A%A8%E5%8B%BE%E9%80%89%E7%AD%94%E6%A1%88%E3%80%81%E4%B8%80%E9%94%AE%E5%A4%8D%E5%88%B6%E9%A2%98%E7%9B%AE%E5%8F%8A%E6%8F%90%E7%A4%BA%E8%AF%8D%E5%88%B0%E5%89%AA%E8%B4%B4%E6%9D%BF%E3%80%81AI%E8%87%AA%E5%8A%A8%E7%AD%94%E9%A2%98%EF%BC%89.meta.js
 // ==/UserScript==
 
 (function() {
