@@ -1,13 +1,18 @@
 // ==UserScript==
 // @name         国开答题助手（可自动勾选答案、一键复制题目及提示词到剪贴板）
-// @namespace    https://github.com/minivv/tampermonkey
+// @namespace    http://tampermonkey.net/
+// @homepage	 https://github.com/minivv/tampermonkey
 // @version      0.5
 // @description  国开答题辅助工具，可自动勾选答案、一键复制题目及提示词到剪贴板。
 // @author       minivv
 // @match        https://lms.ouchn.cn/exam/*/subjects*
 // @grant        GM_addStyle
 // @grant        GM_setClipboard
+// @icon         https://dtking.cn/favicon.ico
 // @run-at       document-idle
+// @license      Apache-2.0
+// @downloadURL https://github.com/minivv/tampermonkey/blob/master/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B.js
+// @updateURL https://github.com/minivv/tampermonkey/blob/master/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B.js
 // ==/UserScript==
 
 (function() {
