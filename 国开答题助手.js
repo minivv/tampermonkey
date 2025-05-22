@@ -13,7 +13,7 @@
 // @grant        GM_xmlhttpRequest
 // @connect      api.deepseek.com
 // @connect      *
-// @icon         https://dtking.cn/favicon.ico
+// @icon         https://linux.do/uploads/default/optimized/3X/9/d/9dd49731091ce8656e94433a26a3ef36062b3994_2_32x32.png
 // @run-at       document-idle
 // @license      Apache-2.0
 // @downloadURL https://github.com/minivv/tampermonkey/blob/master/%E5%9B%BD%E5%BC%80%E7%AD%94%E9%A2%98%E5%8A%A9%E6%89%8B.js
@@ -31,37 +31,37 @@
     const title = document.createElement('h3');
     title.textContent = '国开答题助手';
     panel.appendChild(title);
-    
+
     // 创建标签页容器
     const tabContainer = document.createElement('div');
     tabContainer.id = 'tabContainer';
     tabContainer.style.marginBottom = '10px';
     panel.appendChild(tabContainer);
-    
+
     // 创建标签页按钮
     const manualTab = document.createElement('button');
     manualTab.id = 'manualTab';
     manualTab.textContent = '手动答题';
     manualTab.className = 'tab-button active';
     tabContainer.appendChild(manualTab);
-    
+
     const aiTab = document.createElement('button');
     aiTab.id = 'aiTab';
     aiTab.textContent = 'AI一键答题';
     aiTab.className = 'tab-button';
     tabContainer.appendChild(aiTab);
-    
+
     // 创建标签页内容区域
     const tabContents = document.createElement('div');
     tabContents.id = 'tabContents';
     panel.appendChild(tabContents);
-    
+
     // 手动答题标签页内容
     const manualTabContent = document.createElement('div');
     manualTabContent.id = 'manualTabContent';
     manualTabContent.className = 'tab-content';
     tabContents.appendChild(manualTabContent);
-    
+
     const instructions = document.createElement('p');
     instructions.innerHTML = `请粘贴答案，格式如下：<br>1. A<br>2. A, B<br>3. C<br>(题号后可跟 . 或 、 或 ．)`;
     manualTabContent.appendChild(instructions);
@@ -72,7 +72,7 @@
     answerTextArea.cols = 35;
     answerTextArea.placeholder = "例如：\n1. A\n2. A, B\n3. C,D\n49. A,B,C";
     manualTabContent.appendChild(answerTextArea);
-    
+
     const submitButton = document.createElement('button');
     submitButton.id = 'submitAnswersButton';
     submitButton.textContent = '自动勾选答案';
@@ -85,20 +85,20 @@
     copyButton.className = 'secondary-button';
     copyButton.style.marginTop = '8px';
     manualTabContent.appendChild(copyButton);
-    
+
     // AI一键答题标签页内容
     const aiTabContent = document.createElement('div');
     aiTabContent.id = 'aiTabContent';
     aiTabContent.className = 'tab-content';
     aiTabContent.style.display = 'none'; // 初始隐藏
     tabContents.appendChild(aiTabContent);
-    
+
     // API配置区域
     const apiConfigContainer = document.createElement('div');
     apiConfigContainer.id = 'apiConfigContainer';
     apiConfigContainer.style.marginBottom = '12px';
     aiTabContent.appendChild(apiConfigContainer);
-    
+
     // API Key输入框
     const apiKeyLabel = document.createElement('label');
     apiKeyLabel.textContent = 'API Key: ';
@@ -106,7 +106,7 @@
     apiKeyLabel.style.display = 'block';
     apiKeyLabel.style.marginBottom = '4px';
     apiConfigContainer.appendChild(apiKeyLabel);
-    
+
     const apiKeyInput = document.createElement('input');
     apiKeyInput.id = 'deepseekApiKey';
     apiKeyInput.type = 'password';
@@ -123,7 +123,7 @@
         logStatus("API Key已保存", false);
     });
     apiConfigContainer.appendChild(apiKeyInput);
-    
+
     const apiKeyToggle = document.createElement('button');
     apiKeyToggle.textContent = '显示API Key';
     apiKeyToggle.style.fontSize = '0.7em';
@@ -139,7 +139,7 @@
         }
     });
     apiConfigContainer.appendChild(apiKeyToggle);
-    
+
     // API站点输入框
     const apiUrlLabel = document.createElement('label');
     apiUrlLabel.textContent = 'API站点: ';
@@ -148,7 +148,7 @@
     apiUrlLabel.style.marginBottom = '4px';
     apiUrlLabel.style.marginTop = '8px';
     apiConfigContainer.appendChild(apiUrlLabel);
-    
+
     const apiUrlInput = document.createElement('input');
     apiUrlInput.id = 'apiUrl';
     apiUrlInput.type = 'text';
@@ -165,7 +165,7 @@
         logStatus("API站点已保存", false);
     });
     apiConfigContainer.appendChild(apiUrlInput);
-    
+
     // 模型名称输入框
     const modelNameLabel = document.createElement('label');
     modelNameLabel.textContent = '模型名称: ';
@@ -174,7 +174,7 @@
     modelNameLabel.style.marginBottom = '4px';
     modelNameLabel.style.marginTop = '8px';
     apiConfigContainer.appendChild(modelNameLabel);
-    
+
     const modelNameInput = document.createElement('input');
     modelNameInput.id = 'modelName';
     modelNameInput.type = 'text';
@@ -191,18 +191,18 @@
         logStatus("模型名称已保存", false);
     });
     apiConfigContainer.appendChild(modelNameInput);
-    
+
     const aiButton = document.createElement('button');
     aiButton.id = 'aiAnswerButton';
     aiButton.textContent = 'AI自动答题';
     aiButton.className = 'ai-button';
     aiTabContent.appendChild(aiButton);
-    
+
     // 状态信息区域
     const statusDiv = document.createElement('div');
     statusDiv.id = 'statusMessage';
     panel.appendChild(statusDiv);
-    
+
     // 标签页切换功能
     manualTab.addEventListener('click', function() {
         manualTab.className = 'tab-button active';
@@ -210,7 +210,7 @@
         manualTabContent.style.display = 'block';
         aiTabContent.style.display = 'none';
     });
-    
+
     aiTab.addEventListener('click', function() {
         aiTab.className = 'tab-button active';
         manualTab.className = 'tab-button';
@@ -382,7 +382,7 @@
     submitButton.addEventListener('click', processAnswers);
     copyButton.addEventListener('click', copyQuestionsToClipboard); // 复制按钮的事件监听
     aiButton.addEventListener('click', processAiAnswer); // AI按钮的事件监听
-    
+
     // 切换到AI标签页时自动聚焦到API Key输入框
     aiTab.addEventListener('click', function() {
         if (!apiKeyInput.value) {
@@ -427,7 +427,6 @@
     }
 
     function processAnswers() {
-        logStatus("开始处理...", false);
         const inputText = answerTextArea.value;
         if (!inputText.trim()) {
             logStatus("请输入答案!", true);
@@ -440,15 +439,12 @@
             return;
         }
 
-        logStatus(`解析到 ${userAnswers.length} 条答案. 开始匹配题目...`, false);
-
         const questionBlocks = document.querySelectorAll(questionBlocksSelector);
 
         if (questionBlocks.length === 0) {
             logStatus(`错误: 未在页面上找到任何题目块 (使用选择器: "${questionBlocksSelector}"). 请确认此选择器是否正确匹配每个题目外层容器。如果题目不是div或者ng-if的值不同，请修改。`, true);
             return;
         }
-        logStatus(`在页面上找到 ${questionBlocks.length} 个题目块 (使用 "${questionBlocksSelector}").`, false);
 
         let questionsFoundAndAttempted = 0;
         let answersSuccessfullySet = 0;
@@ -473,8 +469,6 @@
                 if (pageQNum === ua.qNum) {
                     questionMatchedOnPage = true;
                     questionsFoundAndAttempted++;
-                    logStatus(`找到题目 ${ua.qNum}. 尝试选择答案: ${ua.answers.join(', ')}`, false);
-
                     const optionLabels = block.querySelectorAll(optionLabelsSelector);
                     if (optionLabels.length === 0) {
                         logStatus(`警告: 题目 ${ua.qNum} 内部未找到选项标签 (使用选择器: "${optionLabelsSelector}"). 请检查 'optionLabelsSelector'.`, true);
@@ -536,7 +530,7 @@
         logStatus("开始复制题目内容...", false);
 
         const questionBlocks = document.querySelectorAll(questionBlocksSelector);
-        logStatus(`查找到 ${questionBlocks.length} 个题目块。 (使用选择器: "${questionBlocksSelector}")`, false);
+        logStatus(`查找到 ${questionBlocks.length} 个题目块。`, false);
 
         if (questionBlocks.length === 0) {
             logStatus(`错误: 未在页面上找到任何题目块 (使用选择器: "${questionBlocksSelector}"). 请检查脚本中的选择器配置。`, true);
@@ -548,7 +542,6 @@
 
         questionBlocks.forEach((block, index) => {
             try {
-                logStatus(`正在处理第 ${index + 1} 个题目块...`, false);
                 let questionText = `仅输出题号和答案的选项，严格按照格式单选: 1. A 或多选 24. A,B,D这种格式输出，多个题目之间需要换行。以下是所有题：\n`;
                 let pageQNum = "未知题号";
                 const qNumElement = block.querySelector(questionNumberSelector);
@@ -608,27 +601,27 @@
     // --- 新增：DeepSeek AI自动答题功能 ---
     async function processAiAnswer() {
         logStatus("开始AI自动答题流程...", false);
-        
+
         // 检查API Key
         const apiKey = apiKeyInput.value.trim();
         if (!apiKey) {
             logStatus("错误: 请先设置API Key!", true);
             return;
         }
-        
+
         // 获取题目内容
         logStatus("正在获取题目内容...", false);
         const questionBlocks = document.querySelectorAll(questionBlocksSelector);
-        
+
         if (questionBlocks.length === 0) {
             logStatus(`错误: 未在页面上找到任何题目块 (使用选择器: "${questionBlocksSelector}"). 请检查脚本中的选择器配置。`, true);
             return;
         }
-        
+
         // 构建题目文本，与复制功能类似
         let allQuestionsText = "";
         let questionsProcessed = 0;
-        
+
         questionBlocks.forEach((block, index) => {
             try {
                 let questionText = `仅输出题号和答案的选项，严格按照格式单选: 1. A 或多选 24. A,B,D这种格式输出，多个题目之间需要换行。以下是所有题：\n`;
@@ -638,14 +631,14 @@
                     const numMatch = qNumElement.textContent.trim().match(/^(\d+)/);
                     if (numMatch) pageQNum = numMatch[1];
                 }
-                
+
                 const qType = getQuestionType(block);
                 const qStem = getQuestionStem(block);
-                
+
                 questionText += `题号: ${pageQNum}. (${qType})\n`;
                 questionText += `题干: ${qStem}\n`;
                 questionText += "选项:\n";
-                
+
                 const optionLabels = block.querySelectorAll(optionLabelsSelector);
                 if (optionLabels.length > 0) {
                     optionLabels.forEach(label => {
@@ -666,47 +659,47 @@
                 console.error(`处理题目 ${index + 1} 时出错:`, err);
             }
         });
-        
+
         if (questionsProcessed === 0) {
             logStatus("未能处理任何题目，无法继续。", true);
             return;
         }
-        
+
         logStatus(`成功处理 ${questionsProcessed} 道题目。正在发送到AI...`, false);
-        
+
         try {
             // 调用AI API
             const response = await callDeepSeekAPI(allQuestionsText, apiKey);
-            
+
             if (!response || !response.choices || !response.choices[0] || !response.choices[0].message || !response.choices[0].message.content) {
                 logStatus("从AI API获取的响应格式不正确。", true);
                 console.error("API响应:", response);
                 return;
             }
-            
+
             const aiAnswer = response.choices[0].message.content;
             logStatus("AI返回答案成功！正在解析答案...", false);
-            
+
             // 将AI回答填入文本框
             answerTextArea.value = aiAnswer;
-            
+
             // 自动执行勾选答案
             logStatus("正在自动勾选AI提供的答案...", false);
             processAnswers();
-            
+
         } catch (error) {
             logStatus(`调用DeepSeek API出错: ${error.message}`, true);
             console.error("API调用错误:", error);
         }
     }
-    
+
     // 调用AI API的函数
     function callDeepSeekAPI(prompt, apiKey) {
         return new Promise((resolve, reject) => {
             // 获取自定义API站点和模型名称
             const apiUrl = apiUrlInput.value.trim() || 'https://api.deepseek.com';
             const modelName = modelNameInput.value.trim() || 'deepseek-chat';
-            
+
             // 提取域名信息，用于日志显示
             let domain = apiUrl;
             try {
@@ -715,11 +708,26 @@
             } catch (e) {
                 console.error("URL解析错误:", e);
             }
-            
-            logStatus(`正在发送请求到 ${domain}...`, false);
+
+            // 创建基本状态消息
+            const statusMessage = `正在发送请求到 ${domain}`;
+            logStatus(`${statusMessage}...`, false);
             logStatus(`使用模型: ${modelName}`, false);
-            logStatus(`注意: 如果连接失败，请在Tampermonkey设置中允许访问该域名，或重新安装脚本。`, false);
-            
+
+            // 创建加载指示器
+            let dots = 0;
+            const maxDots = 3;
+            const loadingInterval = setInterval(() => {
+                dots = (dots % maxDots) + 1;
+                const dotsStr = '.'.repeat(dots);
+                // 更新最后一条状态消息
+                const lastLogEntry = statusDiv.lastElementChild.previousElementSibling;
+                if (lastLogEntry && lastLogEntry.textContent.includes(statusMessage)) {
+                    const timestamp = lastLogEntry.textContent.split(']')[0] + ']';
+                    lastLogEntry.textContent = `${timestamp} ${statusMessage}${dotsStr}`;
+                }
+            }, 500);
+
             GM_xmlhttpRequest({
                 method: "POST",
                 url: `${apiUrl}/v1/chat/completions`,
@@ -742,10 +750,12 @@
                     temperature: 0.3
                 }),
                 onload: function(response) {
+                    // 清除加载指示器
+                    clearInterval(loadingInterval);
+
                     if (response.status >= 200 && response.status < 300) {
                         try {
                             const data = JSON.parse(response.responseText);
-                            logStatus("AI请求成功!", false);
                             resolve(data);
                         } catch (e) {
                             logStatus("解析AI响应失败: " + e.message, true);
@@ -762,17 +772,22 @@
                         }
                     }
                 },
+
                 onerror: function(error) {
+                    // 清除加载指示器
+                    clearInterval(loadingInterval);
                     logStatus("AI请求网络错误", true);
                     reject(new Error("网络错误: " + error.error));
                 },
                 ontimeout: function() {
+                    // 清除加载指示器
+                    clearInterval(loadingInterval);
                     logStatus("AI请求超时", true);
                     reject(new Error("请求超时"));
                 }
             });
         });
     }
-    
-    logStatus("【答题助手已加载】已分为手动答题和AI一键答题两个标签页，点击上方标签切换。", false);
+
+    logStatus("【答题助手已加载】分为手动答题和AI一键答题，点击上方标签切换。手动答题流程：点击复制题目按钮（自带AI格式要求提示词，直接粘贴到AI平台即可），将AI输出的答案复制，粘贴到答题页面，点击自动勾选答案按钮勾选答案。", false);
 })();
