@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         国开答题助手（可自动勾选答案、一键复制题目及提示词到剪贴板）
-// @namespace    http://tampermonkey.net/
+// @namespace    https://github.com/minivv/tampermonkey
 // @version      0.5
 // @description  国开答题辅助工具，可自动勾选答案、一键复制题目及提示词到剪贴板。
 // @author       minivv
